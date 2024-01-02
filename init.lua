@@ -20,7 +20,8 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 	'preservim/nerdtree',
 	'tiagovla/tokyodark.nvim',
-	'github/copilot.vim'
+	'github/copilot.vim',
+	'pbondoer/vim-42header'
 }
 
 local opts = {}
@@ -33,4 +34,4 @@ vim.cmd('colorscheme tokyodark')
 vim.cmd('set termguicolors')
 
 -- Keymaps
-vim.keymap.set('n', '<C-r>', ':NERDTree<CR>')
+vim.keymap.set('n', '<C-x>', ':NERDTreeToggle<CR>')

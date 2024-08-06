@@ -1,3 +1,7 @@
+-- Map Leader
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 -- Set lazy.nvim path
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
@@ -18,20 +22,38 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Plugins
 local plugins = {
-	'preservim/nerdtree',
-	'tiagovla/tokyodark.nvim',
 	'github/copilot.vim',
-	'pbondoer/vim-42header'
+	'preservim/nerdtree',
+	{
+		'tiagovla/tokyodark.nvim',	-- Colorscheme
+		priority = 9999,		-- Make sure to load this before all the other start plugins
+		init = function()
+			vim.cmd.colorscheme('tokyodark')
+		end,
+	},
+	'42paris/42header',
+	{
+		'nvim-telescope/telescope.nvim', tag = '0.1.8',
+		dependencies = { 'nvim-lua/plenary.nvim' },
+	},
 }
 
 local opts = {}
 
 require("lazy").setup(plugins, opts)
 
+-- Export
+vim.g.user42 = 'jazevedo'
+vim.g.mail42 = 'jazevedo@student.42.rio'
+
 -- Startup CMDs
 vim.cmd('set nu')
-vim.cmd('colorscheme tokyodark')
 vim.cmd('set termguicolors')
 
 -- Keymaps
-vim.keymap.set('n', '<C-x>', ':NERDTreeToggle<CR>')
+vim.keymap.set('i', '<M-w>', '<ESC>:w<CR>')
+vim.keymap.set('n', '<leader>x', ':NERDTreeToggle<CR>')
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})

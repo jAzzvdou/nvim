@@ -6,7 +6,6 @@ return {
             opts = {},
         },
         'williamboman/mason-lspconfig.nvim',
-        'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
         -- Extend LSP capabilities with nvim cmp

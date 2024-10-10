@@ -24,6 +24,7 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 	'github/copilot.vim',
 	'preservim/nerdtree',
+	require('plugins.nvim-lspconfig'),
 	{
 		'tiagovla/tokyodark.nvim',	-- Colorscheme
 		priority = 9999,		-- Make sure to load this before all the other start plugins
@@ -49,6 +50,10 @@ vim.g.mail42 = 'jazevedo@student.42.rio'
 -- Startup CMDs
 vim.cmd('set nu')
 vim.cmd('set termguicolors')
+	-- Format with :F
+vim.cmd('command! F :lua vim.lsp.buf.format()')
+	-- Format and save with :W
+vim.cmd('command! W :exec "F" | w')
 
 -- Keymaps
 vim.keymap.set('i', '<M-w>', '<ESC>:w<CR>')

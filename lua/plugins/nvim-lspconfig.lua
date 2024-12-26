@@ -13,6 +13,7 @@ return {
 
         local servers = {
             pylsp = {},
+            clangd = {},
             lua_ls = {
                 settings = {
                     Lua = {

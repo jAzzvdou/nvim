@@ -57,7 +57,7 @@ vim.cmd('command! W :exec "F" | w')
 
 -- Keymaps
 vim.keymap.set('i', '<M-w>', '<ESC>:w<CR>')
-vim.keymap.set('n', '<leader>x', ':NERDTreeToggle<CR>')
+vim.keymap.set('n', '<C-x>', ':NERDTreeToggle<CR>')
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
